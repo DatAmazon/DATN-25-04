@@ -152,7 +152,7 @@
                             Đơn vị
                         </th>
                         <th>
-                            Số lương
+                            Số lượng
                         </th>
                         <th>
                             Đơn giá
@@ -189,7 +189,8 @@
                 @item.iQuantity
             </td>
             <td>
-                @item.fPrice
+                @*@item.fPrice*@
+                @string.Format("{0:#,0}", item.fPrice)₫
             </td>
 
 

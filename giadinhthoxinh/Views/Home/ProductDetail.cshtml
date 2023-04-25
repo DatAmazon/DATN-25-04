@@ -1,6 +1,14 @@
-﻿@model giadinhthoxinh.Models.tblProduct
-@{ ViewBag.Title = "Chi tiết sản phẩm";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+﻿
+
+
+
+
+
+@model giadinhthoxinh.Models.tblProduct
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
 <link href="~/Content/assets/styles/bootstrap4/bootstrap.min.css" rel="stylesheet" />
@@ -56,125 +64,124 @@
 
 @if (Model != null)
 {
-<div class="container single_product_container">
-    <div class="row">
-        <div class="col">
+    <div class="container single_product_container">
+        <div class="row">
+            <div class="col">
 
-            <!-- Breadcrumbs -->
+                <!-- Breadcrumbs -->
 
-            <div class="breadcrumbs d-flex flex-row align-items-center">
-                <ul>
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Chi tiết sản phẩm</a></li>
-                    @*<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>*@
-                </ul>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-7">
-            @if (Model.sImage != null && Model.sImage.Any())
-            {
-<div class="single_product_pics">
-    <div class="row">
-        <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-            <div class="single_product_thumbnails">
-                <ul>
-                    @*(var item in Model.sImage)*@
-                    @*@for (int i = 0; i < 3; i++)
-                        {
-                            <li><img class="img-secondary" src="@Url.Content(Model.sImage)" alt="" data-image="Model.sImage"></li>
-                        }*@
-                    <li class="active"><img class="img-secondary" src="@Url.Content(Model.sImage)" alt=""></li>
-                    <li><img src="~/Content/assets/images/logo/img-second.jpg" alt="sdfdsf"></li>
-                    <li><img src="~/Content/assets/images/logo/img-second.jpg" alt=""></li>
-                </ul>
+                <div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Chi tiết sản phẩm</a></li>
+                        @*<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>*@
+                    </ul>
+                </div>
 
             </div>
         </div>
-        <div class="col-lg-9 image_col order-lg-2 order-1">
-            <div class="single_product_image">
-                <div class="single_product_image_background" style="border-radius: 2px; background-image: url( @Url.Content(Model.sImage) );"></div>
-            </div>
-        </div>
-    </div>
-</div>                }
 
-        </div>
-
-        @{ int priceVirtual = (int)@Model.fPrice + 35000; }
-
-        <div class="col-lg-5">
-            <div class="product_details">
-                @using (Html.BeginForm("ThemGioHang", "Cart", new { @iMasp = Model.PK_iProductID, @strURL = "/Home" }, FormMethod.Post))
+        <div class="row">
+            <div class="col-lg-7">
+                @if (Model.sImage != null && Model.sImage.Any())
                 {
-@Html.AntiForgeryToken()
-                    <input type="hidden" name="product_id" value="@Model.PK_iProductID" />
-                                        <div class="product_details_title">
-                                            <h2>@Model.sProductName</h2>
-                                            <p>@Model.sDescribe</p>
-                                        </div>
-                                                            <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-                                                                @*<span class="ti-truck"></span><span>miễn phí vận chuyển</span>*@
-                                                            </div>
-                                                                                <div class="original_price"> Giá cũ: @string.Format("{0:#,0}", priceVirtual)₫</div>
-                                                                                                    <div class="product_price">Giá mới: @string.Format("{0:#,0}", Model.fPrice)₫</div> @*<ul class="star_rating">
-                                                                                                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                                                                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                                                                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                                                                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                                                                                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                                                                                                            </ul>*@
-                                                                                                                        <div class="product_color">
-                                                                                                                            @*<span>Màu sắc:</span>*@
-                                                                                                                            <ul>
-                                                                                                                                <li style="background: @Model.sColor"></li>
-                                                                                                                                @*<li style="background: #252525"></li>
-                                                                                                                                    <li style="background: #60b3f3"></li>*@
-                                                                                                                            </ul>
-                                                                                                                        </div> if (Model.iQuantity <= 0)
-                                                                                                                                            {
-                                                                                                                        <span style="background-color: orangered; padding: 2px;">Hết hàng</span> }
-                                                                                                                        <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
-                                                                                                                            <span>Số lượng:</span>
-                                                                                                                            <div class="quantity_selector mb-3">
-                                                                                                                                <span class="minus" id="minus_sl"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                                                                                                                <input type="text" style="width:50px;" name="quantity_value" id="quantity_value" value="1" />
-                                                                                                                                <span class="plus" id="plus_sl"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                                                                                                            </div>
+                    <div class="single_product_pics">
+                        <div class="row">
+                            <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
+                                <div class="single_product_thumbnails">
+                                    <ul>
+                                        <li class="active"><img class="img-secondary" src="@Url.Content(Model.sImage)" alt=""></li>
+                                        <li><img src="~/Content/assets/images/logo/img-second.jpg" alt="sdfdsf"></li>
+                                        <li><img src="~/Content/assets/images/logo/img-second.jpg" alt=""></li>
+                   
+                                    </ul>
 
-                                                                                                                            @*<div class="red_button red_button1 mb-3" ><a href="#" style=" width: 140px; text-transform: none; font-size: 14px;">Thêm vào giỏ hàng</a></div>*@
-                                                                                                                            @if (Model.iQuantity <= 0)
-                                                                                                                            {
-                                                                                                        <input class="add_to_cart_button show-add-cart" disabled="disabled" type="submit" name="submit" value="Thêm vào giỏ" /> }
-                                                                                                                            else
-                                                                                                                            {
-                                                                                                        <input class="red_button add_to_cart_button show-add-cart" id="btn_add_to_carts" type="submit" name="submit" value="Thêm vào giỏ" />}
-                                                                                                                            @*<div class="red_button add_to_cart_button show-add-cart"><a href="/home/productdetail?id=@Model.PK_iProductID&sl=@quantity " />Thêm vào giỏ</div>*@
-                                                                                                                            @*<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>*@
-                                                                                                                        </div>}
+                                </div>
+                            </div>
+                            <div class="col-lg-9 image_col order-lg-2 order-1">
+                                <div class="single_product_image">
+                                    @*<div class="single_product_image_background" style="border-radius: 2px; background-image: url(@Url.Content(Model.sImage));"></div>*@
+                                    <div class="single_product_image_background" style="border-radius: 2px; "><img style="object-fit: cover;" class="img-secondary" src="@Url.Content(Model.sImage)" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            @{
+                int priceVirtual = (int)@Model.fPrice + 35000;
+            }
+
+            <div class="col-lg-5">
+                <div class="product_details">
+                    @using (Html.BeginForm("ThemGioHang", "Cart", new { @iMasp = Model.PK_iProductID, @strURL = "/Home" }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="product_id" value="@Model.PK_iProductID" />
+                        <div class="product_details_title">
+                            <h2>@Model.sProductName</h2>
+                            <p>@Model.sDescribe</p>
+                        </div>
+                        <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
+                            @*<span class="ti-truck"></span><span>miễn phí vận chuyển</span>*@
+                        </div>
+                        <div class="original_price"> Giá cũ: @string.Format("{0:#,0}", priceVirtual)₫</div>
+                        <div class="product_price">Giá mới: @string.Format("{0:#,0}", Model.fPrice)₫/ </div>
+                        
+                        @*<ul class="star_rating">
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            </ul>*@
+                        <div class="product_color">
+                            @*<span>Màu sắc:</span>*@
+                            <ul>
+                                <li style="background: @Model.sColor"></li>
+                                @*<li style="background: #252525"></li>
+                                    <li style="background: #60b3f3"></li>*@
+                            </ul>
+                        </div>
+                        if (Model.iQuantity <= 0)
+                        {
+                            <span style="background-color: orangered; padding: 2px;">Hết hàng</span>
+                        }
+                        <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                            <span>Số lượng:</span>
+                            <div class="quantity_selector mb-3">
+                                <span class="minus" id="minus_sl"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                <input type="text" style="width:50px;" name="quantity_value" id="quantity_value" value="1" />
+                                <span class="plus" id="plus_sl"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                            </div>
+
+                            @*<div class="red_button red_button1 mb-3" ><a href="#" style=" width: 140px; text-transform: none; font-size: 14px;">Thêm vào giỏ hàng</a></div>*@
+                            @if (Model.iQuantity <= 0)
+                            {
+                                <input class="add_to_cart_button show-add-cart" disabled="disabled" type="submit" name="submit" value="Thêm vào giỏ" />
+                            }
+                            else
+                            {
+                                <input class="red_button add_to_cart_button show-add-cart" id="btn_add_to_carts" type="submit" name="submit" value="Thêm vào giỏ" />
+                            }
+                            @*<div class="red_button add_to_cart_button show-add-cart"><a href="/home/productdetail?id=@Model.PK_iProductID&sl=@quantity " />Thêm vào giỏ</div>*@
+                            @*<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>*@
+                        </div>
+                    }
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>}
+}
 
 
 @section scripts{
     <script src="js/single_custom.js"></script>
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

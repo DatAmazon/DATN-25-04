@@ -94,6 +94,7 @@ namespace giadinhthoxinh.Areas.Admin.Controllers
                     tblUser nv = (tblUser)Session["NhanVien"];
                     item.sBiller = nv.sUserName;
                     item.sState = "Hoàn thành";
+                    item.iPaid = 1;
                     db.SaveChanges();
                     List<tblProduct> ProcductInOrder = new List<tblProduct>();
                     List<tblCheckoutDetail> listcheckout = db.tblCheckoutDetails.Where(x => x.FK_iOrderID == id).ToList();// lấy ra danh sách những chi tiết đơn hàng của đơn hàng đã hoàn thành

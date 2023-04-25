@@ -17,11 +17,11 @@
     <div class="card">
         @using (Html.BeginForm("TkNhapHang", "Report", FormMethod.Post))
         {
-        <div class="card-body" style="display: flex;">
-            từ <span><input class="form-control" name="dtReviewTime_from" value="@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ', 'T'))" type="datetime-local" style="width: 250px; margin: auto 10px;" /></span>
-            đến <span><input class="form-control" name="dtReviewTime_to" value="@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ','T'))" type="datetime-local" style="width: 250px; margin: auto 10px;" /></span>
-            <span><input type="submit" value="Thống kê" /></span>
-        </div>
+            <div class="card-body" style="display: flex;">
+                từ <span><input class="form-control" name="dtReviewTime_from" value="@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ', 'T'))" type="datetime-local" style="width: 250px; margin: auto 10px;" /></span>
+                đến <span><input class="form-control" name="dtReviewTime_to" value="@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ','T'))" type="datetime-local" style="width: 250px; margin: auto 10px;" /></span>
+                <span><input type="submit" value="Thống kê" /></span>
+            </div>
         }
 
         <div class="card-header">
@@ -30,8 +30,8 @@
 
         </div>
 
-        <div class="card-body table-responsive text-nowrap">
-            <table class="table table-hover table-striped">
+        <div class="card-body table-responsive text-nowrap" style="overflow: scroll; height: 600px;">
+            <table class="table table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -56,23 +56,23 @@
                                 @item.PK_iImportOrderID
                             </td>
                             <td>
-                               @foreach(var it in ViewBag.checkindetail)
-                               {
-                                   if(@it.FK_iImportOrderID==@item.PK_iImportOrderID)
+                                @foreach (var it in ViewBag.checkindetail)
+                                {
+                                    if (@it.FK_iImportOrderID == @item.PK_iImportOrderID)
                                     {
-                                       foreach( var product in ViewBag.product)
-                                       {
-                                           if(@product.PK_iProductID==@it.FK_iProductID)
+                                        foreach (var product in ViewBag.product)
+                                        {
+                                            if (@product.PK_iProductID == @it.FK_iProductID)
                                             {
-                                                    <p>@product.sProductName</p>
+                                                <p>@product.sProductName</p>
                                             }
-                                       }
+                                        }
                                     }
-                               }
-                   
+                                }
+
 
                             </td>
-                            
+
                             <td>
                                 @item.dtDateAdded
                             </td>
@@ -81,7 +81,7 @@
                             </td>
 
                         </tr>
-                     }
+                    }
                 </tbody>
             </table>
         </div>

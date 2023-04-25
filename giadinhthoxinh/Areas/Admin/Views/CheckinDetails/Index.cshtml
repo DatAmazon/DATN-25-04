@@ -27,8 +27,8 @@
             </div>
         </div>
 
-        <div class="card-body table-responsive text-nowrap">
-            <table class="table table-hover table-striped">
+        <div class="card-body table-responsive text-nowrap" style="overflow: scroll; height: 80vh;">
+            <table class="table table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -52,31 +52,30 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.iQuatity)
-                        </td>
-                        <td>
-                            @*@Html.DisplayFor(modelItem => item.fPrice)*@
-                            @string.Format("{0:#,0}", item.fPrice) vnđ
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iQuatity)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.fPrice)*@
+                @string.Format("{0:#,0}", item.fPrice) vnđ
 
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tblImportOrder.sDeliver)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tblProduct.sProductName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tblProduct.PK_iProductID)
-                        </td>
-                        <td>
-                            @Html.ActionLink("sửa", "Edit", new { id = item.PK_iCheckinDetailID }, new { @class = "btn btn-primary btn-warning" }) |
-                            @Html.ActionLink("chi tiết", "Details", new { id = item.PK_iCheckinDetailID }, new { @class = "btn btn-primary btn-info" }) |
-                            @Html.ActionLink("xóa", "Delete", new { id = item.PK_iCheckinDetailID }, new { @class = "btn btn-primary btn-danger" })
-                        </td>
-                    </tr>
-                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblImportOrder.sDeliver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblProduct.sProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblProduct.PK_iProductID)
+            </td>
+            <td>
+                @Html.ActionLink("sửa", "Edit", new { id = item.PK_iCheckinDetailID }, new { @class = "btn btn-primary btn-warning" }) |
+                @Html.ActionLink("chi tiết", "Details", new { id = item.PK_iCheckinDetailID }, new { @class = "btn btn-primary btn-info" }) |
+                @Html.ActionLink("xóa", "Delete", new { id = item.PK_iCheckinDetailID }, new { @class = "btn btn-primary btn-danger" })
+            </td>
+        </tr>}
                 </tbody>
             </table>
         </div>

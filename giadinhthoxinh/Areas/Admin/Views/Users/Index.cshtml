@@ -39,8 +39,8 @@
 
         </div>
 
-        <div class="card-body table-responsive text-nowrap">
-            <table class="table table-hover table-striped">
+        <div class="card-body table-responsive text-nowrap" style="overflow: scroll; height: 80vh;">
+            <table class="table table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -70,35 +70,34 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.sEmail)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.sPass)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.sUserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.sPhone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.sAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.iState)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tblPermission.sPermissionName)
-                            </td>
-                            <td>
-                                @Html.ActionLink("sửa", "Edit", new { id = item.PK_iAccountID }, new { @class = "btn btn-primary btn-warning" }) |
-                                @Html.ActionLink("chi tiết", "Details", new { id = item.PK_iAccountID }, new { @class = "btn btn-primary btn-info" }) |
-                                @Html.ActionLink("xóa", "Delete", new { id = item.PK_iAccountID }, new { @class = "btn btn-primary btn-danger" })
-                            </td>
-                        </tr>
-                    }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sPass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblPermission.sPermissionName)
+            </td>
+            <td>
+                @Html.ActionLink("sửa", "Edit", new { id = item.PK_iAccountID }, new { @class = "btn btn-primary btn-warning" }) |
+                @Html.ActionLink("chi tiết", "Details", new { id = item.PK_iAccountID }, new { @class = "btn btn-primary btn-info" }) |
+                @Html.ActionLink("xóa", "Delete", new { id = item.PK_iAccountID }, new { @class = "btn btn-primary btn-danger" })
+            </td>
+        </tr>}
                 </tbody>
             </table>
         </div>

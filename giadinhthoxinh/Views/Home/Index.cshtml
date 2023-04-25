@@ -168,7 +168,7 @@ else
                             <a href="/home/productdetail?id=@item.PK_iProductID"><img src="@Url.Content(item.sImage)" /></a>
                         </div>
                         <div class="favorite"></div>
-                        <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+                        @*<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>*@
                         <div class="product_info">
                             <h6 class="product_name"><a href="single.html">@item.sProductName</a></h6>
                             <div class="product_price">@string.Format("{0:#,0}", item.fPrice)₫ <span>@string.Format("{0:#,0}", priceVirtual)₫</span></div>

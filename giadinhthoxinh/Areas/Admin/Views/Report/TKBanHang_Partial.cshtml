@@ -1,5 +1,5 @@
-﻿<div class="card-body table-responsive text-nowrap">
-    <table class="table table-hover table-striped">
+﻿<div class="card-body table-responsive text-nowrap" style="overflow: scroll; height: 80vh;">
+    <table class="table table-hover table-striped ">
         <thead class="thead-dark">
             <tr>
                 <th>
@@ -20,23 +20,23 @@
         <tbody>
             @foreach (var item in ViewBag.MyList)
             {
-<tr>
-    <td>
-        @item.PK_iOrderID
-    </td>
-    <td>
-        @item.dInvoidDate
-    </td>
-    <td>
-        @item.sState
-    </td>
-    <td>
-        @item.iTotal
-    </td>
+                <tr>
+                    <td>
+                        @item.PK_iOrderID
+                    </td>
+                    <td>
+                        @item.dInvoidDate
+                    </td>
+                    <td>
+                        @item.sState
+                    </td>
+                    <td>
+                        @item.iTotal
+                    </td>
 
 
-</tr>
-}
+                </tr>
+            }
         </tbody>
     </table>
 </div>

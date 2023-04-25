@@ -38,8 +38,8 @@
             </div>
         </div>
 
-        <div class="card-body table-responsive text-nowrap">
-            <table class="table table-hover table-striped">
+        <div class="card-body table-responsive text-nowrap" style="overflow: scroll; height: 80vh;">
+            <table class="table table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -81,48 +81,47 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sCustomerName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sCustomerPhone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sDeliveryAddress)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dInvoidDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sBiller)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.iDeliveryMethod)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.iTotal)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fSurcharge)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.iPaid)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.sState)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tblUser.sEmail)
-                        </td>
-                        <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sCustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sCustomerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sDeliveryAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dInvoidDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sBiller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iDeliveryMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fSurcharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.iPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblUser.sEmail)
+            </td>
+            <td>
 
-                            @Html.ActionLink("sửa", "Edit", new { id = item.PK_iOrderID }, new { @class = "btn btn-primary btn-warning" }) |
-                            @Html.ActionLink("chi tiết", "Details", new { id = item.PK_iOrderID }, new { @class = "btn btn-primary btn-info" }) |
-                            @Html.ActionLink("xóa", "Delete", new { id = item.PK_iOrderID }, new { @class = "btn btn-primary btn-danger" })
-                        </td>
-                    </tr>
-                    }
+                @Html.ActionLink("sửa", "Edit", new { id = item.PK_iOrderID }, new { @class = "btn btn-primary btn-warning" }) |
+                @Html.ActionLink("chi tiết", "Details", new { id = item.PK_iOrderID }, new { @class = "btn btn-primary btn-info" }) |
+                @Html.ActionLink("xóa", "Delete", new { id = item.PK_iOrderID }, new { @class = "btn btn-primary btn-danger" })
+            </td>
+        </tr>}
                 </tbody>
             </table>
 
